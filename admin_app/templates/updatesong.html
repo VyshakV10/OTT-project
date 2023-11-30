@@ -1,0 +1,49 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Songs</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                {% for i in songdetail %}
+                <form role="form" method="post" action="{% url 'updatesong' i.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="songname">Name of song</label>
+                            <input type="text" class="form-control" id="songname" name="songname" placeholder="Enter name" value="{{ i.songname }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="songcategory">Song Category</label>
+                            <input type="text" class="form-control" id="songcategory" name="songcategory" placeholder="" value="{{ i.songcategory }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="songartist">Artist</label>
+                            <input type="text" class="form-control" id="songartist" name="songartist" placeholder="" value="{{ i.songartist }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="songmovie">Song from which movie</label>
+                            <input type="text" class="form-control" id="songmovie" name="songmovie" placeholder="" value="{{ i.songmovie}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="songposter">Song Poster</label>
+                            <input type="file" id="songposter" name="songposter">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section> 
+{% endblock %}

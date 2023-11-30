@@ -1,0 +1,32 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Movie Details</h3>                                    
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name of Movie</th>
+                                <th>Actor/Actress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in moviedetail %}
+                            <tr>
+                                <td>{{i.moviename}}</td>
+                                <td><a href="{% url 'addactors' i.id %}"><button class="btn btn-success">Add</button></a></td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

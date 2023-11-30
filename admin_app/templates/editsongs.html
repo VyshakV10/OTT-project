@@ -1,0 +1,42 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Song Details</h3>                                    
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name of Song</th>
+                                <th>Song Category</th>
+                                <th>Artist</th>
+                                <th>Song Movie</th>
+                                <th>Song Poster</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in songdetail %}
+                            <tr>
+                                <td>{{i.songname}}</td>
+                                <td>{{i.songcategory}}</td>
+                                <td>{{i.songartist}}</td>
+                                <td>{{i.songmovie}}</td>
+                                <td><img src="{{i.songposter.url}}"></td>
+                                <td><a href="{% url 'editsongs' i.id %}"><button>Edit</button></a></td>
+                                <td><a href="{% url 'deletesong' i.id %}"><button>Delete</button></a></td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

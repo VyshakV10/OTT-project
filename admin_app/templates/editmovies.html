@@ -1,0 +1,44 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Movie Details</h3>                                    
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name of Movie</th>
+                                <th>Movie Category</th>
+                                <th>Movie Director</th>
+                                <th>IMDB Rating</th>
+                                <th>Movie Discription</th>
+                                <th>Movie Poster</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in moviedetail %}
+                            <tr>
+                                <td>{{i.moviename}}</td>
+                                <td>{{i.moviecategory}}</td>
+                                <td>{{ i.moviedirector }}</td>
+                                <td>{{ i.imdbrating }}</td>
+                                <td>{{i.moviedisciption}}</td>
+                                <td><img src="{{i.movieposter.url}}"></td>
+                                <td><a href="{% url 'editmovies' i.id %}"><button class="btn btn-primary">Edit</button></a></td>
+                                <td><a href="{% url 'deletemovie' i.id %}"><button class="btn btn-danger">Delete</button></a></td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                </div><!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

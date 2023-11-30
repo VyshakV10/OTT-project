@@ -1,0 +1,18 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+ 
+<body>
+    <center>
+       <p>
+            {% for i in moviedetail %}
+            <video width="600" height="300" controls preload="auto">
+                <source src="{{ i.movievideo.url }}" type="video/mp4">
+            </video>
+            {% endfor %}
+    </center>
+</body>
+</html>
+{% endblock %}
